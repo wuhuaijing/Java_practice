@@ -1,0 +1,54 @@
+package test2;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+
+class Student2{
+	String name ;
+	String gender;
+	int age;
+	Student2(String name,String gender,int age){
+      this.name=name;
+      this.gender=gender;
+      this.age=age;
+	}
+}
+
+public class TestHashMap {
+	public static void main(String agrs[]){
+		Student2 s1=new Student2("张三","男",16);
+		Student2 s2=new Student2("里斯","女",16);
+		Student2 s3=new Student2("二胡","男",17);
+		Student2 s4=new Student2("三六","女",17);
+		ArrayList<Student2>gaoer=new ArrayList<>();
+		gaoer.add(s1);
+		gaoer.add(s2);
+		ArrayList<Student2>gaosan=new ArrayList<>();
+		gaosan.add(s3);
+		gaosan.add(s4);
+		HashMap<String,ArrayList>map=new HashMap<>();
+	
+	    map.put("高二", gaoer);
+	    map.put("高三", gaosan);
+	    //抽取 高三的学员信息
+	    System.out.println("请输入班级名称:");
+	    Scanner sc=new Scanner(System.in);
+	    String key=sc.next();
+	    if(map.containsKey(key)){
+	    	ArrayList<Student2>list=map.get(key);//如果集合中有key元素，则获取对应键的值，
+	    	//并且放在list集合中
+	    	System.out.println(key+"学生列表");
+	    	//for-each 循环通常用于遍历数组和集合，for(元素类型 元素 : 数组或集合)
+	    	Iterator<Student2>te=list.iterator();
+			   while(te.hasNext()){//判断集合中是否有未迭代的元素
+				Student2 stu =te.next();//一个元素放入对象stu中
+				System.out.println(""+stu.name+""+stu.gender+""+stu.age);
+	    	
+	    }
+				
+	    }
+	}
+}
+	   
