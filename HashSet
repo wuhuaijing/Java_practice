@@ -1,0 +1,51 @@
+package test2;
+import java.util.*;
+class Student1{
+	String name;
+	int math;
+	int english;
+	Student1(String name,int math,int english){
+		this.name=name;
+		this.math=math;
+		this.english=english;
+	}
+}
+public class TestHashSet {
+public static void main(String agrs[]){
+	Student1 s1=new Student1("漳卅",78,89);
+	Student1 s2=new Student1("李四",78,88);
+	Student1 s3=new Student1("二泉",90,67);
+	Student1 s4=new Student1("三六",87,66);
+	
+	HashSet<Student1>set=new HashSet<Student1>();
+	HashSet<Student1>subset=new HashSet<Student1>();
+	set.add(s1);
+	set.add(s2);
+	set.add(s3);
+	set.add(s4);
+	subset.add(s3);
+	subset.add(s4);
+	if(set.contains(s1)){
+		System.out.println("集合set中有"+s1.name);
+	}
+	if(set.containsAll(subset)){
+		System.out.println("集合set包含集合subset");
+	}
+	int number=subset.size();
+	System.out.println("集合subset中有"+number+"个元素");
+	Object s[]=subset.toArray();//将集合元素放在数组中并返回这个数组
+	for	(int i=0;i<s.length;i++){
+		System.out.printf("姓名:%s，数学:%d， 英语:%d\n",((Student1)s[i]).name,((Student1)s[i]).math,((Student1)s[i]).english);
+	}
+	number=set.size();
+	System.out.println("集合set中有"+number+"个元素");
+	Iterator<Student1>iter=set.iterator();
+	while(iter.hasNext()){
+		Student1 te=iter.next();
+		System.out.printf("姓名:%s,分数:%d\n",te.name,te.math,te.english);
+		//printf()不换行输出；
+	}
+	
+	
+}
+}
